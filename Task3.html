@@ -55,6 +55,10 @@
         const todoList = [];
         
         // BE ABLE TO EXPLAIN what document.getByElementID() and .addEventListener() does in this context
+        // document.getElementByID() returns the element with the 'add-todo-btn' id (which is the "Add To Do" Button)
+        // .addEventListener() attaches an event handler to the element returned by .getElementByID such that when the button is clicked,
+        // the input in the element with the "todo-input" id is returned and the value of todoInput is stored in createdTodo without whitespace before or after (trim)
+        // Then, if the createdTodo is not empty, the todo is added to todoList (via addTodo(createdTodo)), which also refreshes the todolist.
         document.getElementById('add-todo-btn').addEventListener('click', () => {
             
             // BE ABLE TO EXPLAIN what document.getByElementID() does in this context
@@ -63,15 +67,18 @@
             
             // Add non-empty string todos to the todo list
             // YOUR CODE HERE 
-
-            // reset the input value after add todo is clicked.
-            todoInput.value = '';
+            if (!(createdTodo === "")) {
+                addTodo(createdTodo);
+                // reset the input value after add todo is clicked.
+                todoInput.value = '';
+            } 
         });
         
         // This re-renders the list of items displayed on the webpage based on the new todoList
         function refreshTodoList() {
             
             // BE ABLE TO EXPLAIN what document.getByElementID() does in this context
+            // document.getElementById searches for elements with the "todo-list" id and returns them to be sotred in todoListElement
             const todoListElement = document.getElementById('todo-list');
             todoListElement.innerHTML = '';
 
@@ -90,11 +97,15 @@
 
         function deleteTodo(index) {
             // YOUR CODE HERE (recycle your work from former tasks)
+            // removes 1 item from the todoList found at index.
+            todoList.splice(index, 1)
             refreshTodoList()
         }
 
         function addTodo(todo) {
             // YOUR CODE HERE (recycle your work from former tasks)
+            // adds todo to the end of the todoList array
+            todoList.push(todo)
             refreshTodoList()
         }
     </script>

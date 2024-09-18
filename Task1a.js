@@ -23,6 +23,18 @@ const todoList = [];
  */
 function addAndPrintTodos() {
     // YOUR CODE HERE
+    // Add tasks to todo list
+    todoList.push("Apply to y/cs!")
+    todoList.push("Pick out my classes")
+    todoList.push("Have dinner with my suite")
+
+    // Print out title
+    console.log("TODOS:")
+
+    // Loop over each item in todo list and print it out to the console
+    for (let i = 0; i < todoList.length; i++) {
+        console.log( (i + 1) + ". " + todoList[i])
+    }
 }
 
 /**
